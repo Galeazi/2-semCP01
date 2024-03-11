@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import { Button, CategoryList, Layout, ProductCard } from "../../components";
-import { ProductCategories, ProductWrapper } from "../Hamburgers/Hamburgers.style";
+import { ProductCategories, ProductWrapper } from "./Hamburgers.style";
 import {
     ProductCardContent,
     ProductCardPrice,
 } from "../../components/ProductCard/ProductCard.style";
 
-export default function Entradinhas() {
+export default function Hamburgers() {
     const [isLoading, setIsloading] = useState(false);
     const [categories, setCategories] = useState([]);
     const [products, setProducts] = useState([]);
@@ -34,13 +34,13 @@ export default function Entradinhas() {
         }
     };
 
-    const getAppetizers = async () => {
-        const url = "http://localhost:8000/appetizers"
-        setIsloading(true)
+    const getHamburgers = async () => {
+        const url = "http://localhost:8000/hamburgers"
+        setIsloading(true);
         try {
             const response = await fetch(url);
             const data = await response.json();
-            setProducts(data)
+            setProducts(data);
         } catch (error) {
             console.log(error);
 
@@ -50,18 +50,18 @@ export default function Entradinhas() {
         }
     };
 
+
     useEffect(() => {
         getCategories();
     }, []);
 
-
     useEffect(() => {
-        getAppetizers();
+        getHamburgers();
     }, []);
 
     return (
         <Layout>
-            <h1>Entradinhas</h1>
+            <h1>Hamburgers</h1>
             <ProductCategories>
                 {isLoading ? (<p>Carregando</p>)
                     : (
@@ -83,9 +83,9 @@ export default function Entradinhas() {
                                     <Button onClick={() => { }}>Adicionar</Button>
                                 </ProductCardContent>
                                 <ProductCardPrice>
-                                    {priceFormat(product.value.small)}
+                                    {priceFormat(product.values.single)}
                                 </ProductCardPrice>
-                                <img src={product.image} alt={product.title} />
+                                <img src={product.image[0]} alt={product.title} />
                             </ProductCard>
                         ))
                     )

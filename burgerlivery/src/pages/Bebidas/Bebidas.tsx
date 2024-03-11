@@ -35,7 +35,7 @@ export default function Entradinhas() {
     };
 
     const getBeverages = async () => {
-        const url = "http://localhost:8000/desserts"
+        const url = "http://localhost:8000/beverages"
         setIsloading(true)
         try {
             const response = await fetch(url);
@@ -83,9 +83,9 @@ export default function Entradinhas() {
                                     <Button onClick={() => { }}>Adicionar</Button>
                                 </ProductCardContent>
                                 <ProductCardPrice>
-                                    {priceFormat(product.value.small)}
+                                    {priceFormat(product.value)}
                                 </ProductCardPrice>
-                                <img src={product.image[0]} alt={product.title} />
+                                <img src={product.image} alt={product.title} />
                             </ProductCard>
                         ))
                     )
