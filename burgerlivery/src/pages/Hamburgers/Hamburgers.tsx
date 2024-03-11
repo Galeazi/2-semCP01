@@ -11,6 +11,7 @@ export default function Hamburgers() {
   const [isLoading, setIsloading] = useState(false);
   const [categories, setCategories] = useState([]);
   const [products, setProducts] = useState([]);
+  const [appetizers, setAppetizers] = useState([]);
 
   const priceFormat = (price: number) => {
     return new Intl.NumberFormat("pt-BR", {
@@ -36,7 +37,6 @@ export default function Hamburgers() {
 
   const getHamburgers = async () => {
     const url = "http://localhost:8000/hamburgers"
-    setIsloading(true)
     setIsloading(true);
     try {
       const response = await fetch(url);
@@ -48,10 +48,25 @@ export default function Hamburgers() {
     } finally {
       console.log('finnaly');
       setIsloading(false);
-      setIsloading(false);
-
     }
   };
+
+  const getAppetizers = async () => {
+    const url = "http://localhost:8000/appetizers"
+    setIsloading(true)
+    try {
+      const response = await fetch(url);
+      const data = await response.json();
+      setAppetizers(data)
+    } catch (error) {
+      console.log(error);
+
+    } finally {
+      console.log('finnaly');
+      setIsloading(false);
+    }
+  };
+
 
   useEffect(() => {
     getCategories();
@@ -59,6 +74,10 @@ export default function Hamburgers() {
 
   useEffect(() => {
     getHamburgers();
+  }, []);
+
+  useEffect(() => {
+    getAppetizers();
   }, []);
 
   return (
