@@ -10,6 +10,7 @@ export default function Entradinhas() {
     const [isLoading, setIsloading] = useState(false);
     const [categories, setCategories] = useState([]);
     const [products, setProducts] = useState([]);
+    const [selected, setSelected] = useState({});
 
 
     const priceFormat = (price: number) => {
@@ -59,6 +60,10 @@ export default function Entradinhas() {
         getAppetizers();
     }, []);
 
+    const handleChange = (index: number, price: string) => {
+        setSelected({ selected, [index]: price });
+    }
+
     return (
         <Layout>
             <h1>Entradinhas</h1>
@@ -80,10 +85,25 @@ export default function Entradinhas() {
                                 <ProductCardContent>
                                     <h2>{product.title}</h2>
                                     <p>{product.description}</p>
+                                    <div>
+                                        <input type="radio" id={`price_small_${index}`}
+                                            value="small"
+                                            checked={selected[index] === "small"}
+                                            onChange={() => handleChange(index, "small")}
+                                        />
+                                        <label htmlFor={`price_small_${index}`}>Pequeno</label>
+
+                                        <input type="radio" id={`price_large_${index}`}
+                                            value="large"
+                                            checked={selected[index] === "large"}
+                                            onChange={() => handleChange(index, "large")}
+                                        />
+                                        <label htmlFor={`price_large_${index}`}>Grande</label>
+                                    </div>
                                     <Button onClick={() => { }}>Adicionar</Button>
                                 </ProductCardContent>
                                 <ProductCardPrice>
-                                    {priceFormat(product.value.small)}
+                                    {priceFormat(product.value[selected[index]])}
                                 </ProductCardPrice>
                                 <img src={product.image} alt={product.title} />
                             </ProductCard>
