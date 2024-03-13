@@ -75,6 +75,7 @@ export default function Entradinhas() {
 
                         ))
                     )}
+
             </ProductCategories>
             <ProductWrapper>
                 {isLoading
