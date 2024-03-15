@@ -78,6 +78,7 @@ export default function Hamburgers() {
                         products.map((product, index) => (
                             <ProductCard key={index}>
                                 <ProductCardContent>
+                                    <h1>COMBO</h1>
                                     <h2>{product.title}</h2>
                                     <p>{`${product.description} + BATATA TRADICIONAL E BEBIDA`}</p>
                                     <Button onClick={() => { }}>Adicionar</Button>

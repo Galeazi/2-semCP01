@@ -3,9 +3,9 @@ const appetizers = [
     image: "https://files.menudino.com/cardapios/37486/160.jpg",
     title: "CHICKEN SUPREME",
     description: "10 unidades de franguinhos empanados + molho tropical. :)",
-    values: {
+    value: {
       small: 20,
-      large: null,
+      large: 28,
     },
   },
   {
