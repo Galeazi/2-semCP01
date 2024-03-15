@@ -101,6 +101,8 @@ export default function Entradinhas() {
                                         />
                                         <label htmlFor={`price_large_${index}`}>Grande</label>
                                     </div>
+                                    <br />
+                                    <p>Selecione o tamanho para visualizar o preço!</p>
                                     <Button onClick={() => { }}>Adicionar</Button>
                                 </ProductCardContent>
                                 <ProductCardPrice>
